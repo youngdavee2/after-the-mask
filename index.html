@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFTER THE MASK — Luxury Masquerade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --light-gray: #f5f5f5;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --gold-light: #e8c547;
+            --gold-dark: #9a860d;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--black);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== BACKGROUND WITH IMAGE PLACEHOLDER & GOLD PARTICLES ===== */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--black);
+        }
+
+        .masks-image-area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="maskGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(212,175,55,0.15);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(0,0,0,0.3);stop-opacity:1" /></linearGradient></defs><ellipse cx="200" cy="300" rx="180" ry="220" fill="url(%23maskGrad)" opacity="0.4" /><ellipse cx="1000" cy="350" rx="180" ry="220" fill="url(%23maskGrad)" opacity="0.35" /></svg>') center/cover no-repeat;
+            opacity: 0.6;
+            animation: backgroundFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.65; transform: scale(1.02); }
+        }
+
+        /* Gold Floating Particles */
+        .particles-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+        }
+
+        .particle.active {
+            animation: float-particle linear forwards;
+        }
+
+        @keyframes float-particle {
+            0% {
+                opacity: 0;
+                transform: translateY(0) translateX(0) scale(1);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-300px) translateX(var(--tx)) scale(0.5);
+            }
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            padding: 40px 0;
+            position: relative;
+            z-index: 10;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            position: relative;
+            z-index: 5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== TICKETS SECTION ===== */
+        .tickets-section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 60px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .tickets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .ticket-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 50px 40px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+        }
+
+        .ticket-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .ticket-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), inset 0 0 30px rgba(212, 175, 55, 0.05);
+            transform: translateY(-8px);
+        }
+
+        .ticket-card:hover::before {
+            left: 100%;
+        }
+
+        .ticket-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .ticket-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .ticket-validity {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .ticket-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .ticket-price-period {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            letter-spacing: 0.5px;
+        }
+
+        .ticket-features {
+            list-style: none;
+            margin-bottom: 35px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 30px 0;
+        }
+
+        .ticket-features li {
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .ticket-features li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 12px;
+        }
+
+        .select-ticket-btn {
+            width: 100%;
+            padding: 14px 30px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Lora', serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .select-ticket-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* ===== BOOKING SECTION ===== */
+        .booking-section {
+            padding: 120px 0;
+            background: rgba(26, 26, 26, 0.4);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .booking-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .booking-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .booking-info p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .booking-info ul {
+            list-style: none;
+            margin: 40px 0;
+        }
+
+        .booking-info li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 14px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .booking-info li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-primary);
+            font-family: 'Lora', serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .selected-ticket-display {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 20px;
+            border-radius: 0;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .selected-ticket-display.active {
+            display: block;
+            animation: slideInDown 0.5s ease-out;
+        }
+
+        .selected-ticket-display p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .selected-ticket-display .label {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .selected-ticket-display .value {
+            color: var(--text-primary);
+            font-size: 16px;
+        }
+
+        .mask-fee-section {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0;
+        }
+
+        .mask-fee-section h4 {
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .mask-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .mask-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: var(--gold);
+        }
+
+        .mask-option label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-primary);
+            text-transform: none;
+            letter-spacing: normal;
+            font-weight: normal;
+            text-transform: none;
+        }
+
+        .price-breakdown {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .price-item:last-child {
+            margin-bottom: 0;
+            padding-top: 12px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px 30px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            font-family: 'Lora', serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold-light);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Message Display */
+        .form-message {
+            padding: 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            border-radius: 0;
+            display: none;
+            animation: slideInDown 0.4s ease-out;
+        }
+
+        .form-message.show {
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(220, 53, 69, 0.15);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            color: #ff6b9d;
+        }
+
+        .form-message.success {
+            background: rgba(40, 167, 69, 0.15);
+            border: 1px solid rgba(40, 167, 69, 0.3);
+            color: #28a745;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--dark-gray);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 60px 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .modal-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .success-checkmark {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .close-modal-btn {
+            margin-top: 30px;
+            padding: 12px 40px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            font-family: 'Lora', serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .close-modal-btn:hover {
+            background: var(--gold-light);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .tickets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .booking-form {
+                padding: 30px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="background-container">
+        <div class="masks-image-area"></div>
+        <div class="particles-container" id="particlesContainer"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">AFTER THE MASK</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#tickets">Tickets</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>An Evening of Luxury & Mystery</h1>
+            <p class="subtitle">Exquisite Masquerade Experience</p>
+            <p class="description">Join us for an unforgettable night of elegance, sophistication, and mystery. Dress to impress. Wear your mask. Embrace the night.</p>
+        </section>
+
+        <!-- Tickets Section -->
+        <section class="tickets-section" id="tickets">
+            <div class="container">
+                <h2 class="section-title">Select Your Ticket</h2>
+                <div class="tickets-grid">
+                    <!-- Early Bird -->
+                    <div class="ticket-card" onclick="selectTicket('early-bird', 'EARLY BIRD', 7000, 'Valid until June 15')">
+                        <div class="ticket-label">⚡ LIMITED TIME</div>
+                        <h3>Early Bird</h3>
+                        <p class="ticket-validity">Valid until June 15, 2024</p>
+                        <div class="ticket-price">₦7,000</div>
+                        <p class="ticket-price-period">Per Ticket</p>
+                        <ul class="ticket-features">
+                            <li>Entry</li>
+                            <li>Good Music</li>
+                            <li>Food & drinks</li>
+                            <li>Guest Privileges</li>
+                            <li>Photo Opportunities</li>
+                        </ul>
+                        <button class="select-ticket-btn">Select</button>
+                    </div>
+
+                    <!-- Regular -->
+                    <div class="ticket-card" onclick="selectTicket('regular', 'REGULAR', 10000, 'Standard admission')">
+                        <div class="ticket-label">🎭 STANDARD</div>
+                        <h3>Regular</h3>
+                        <p class="ticket-validity">Available Throughout Season</p>
+                        <div class="ticket-price">₦10,000</div>
+                        <p class="ticket-price-period">Per Ticket</p>
+                        <ul class="ticket-features">
+                            <li>Everything on Early bed ticket</li>
+                        </ul>
+                        <button class="select-ticket-btn">Select</button>
+                    </div>
+
+                    <!-- VIP -->
+                    <div class="ticket-card" onclick="selectTicket('vip', 'VIP EXPERIENCE', 14000, 'Premium access')">
+                        <div class="ticket-label">👑 EXCLUSIVE</div>
+                        <h3>VIP</h3>
+                        <p class="ticket-validity">Ultimate Luxury Experience</p>
+                        <div class="ticket-price">₦14,000</div>
+                        <p class="ticket-price-period">Per Ticket</p>
+                        <ul class="ticket-features">
+                            <li>VIP Table Access</li>
+                            <li>Premium Bar Service</li>
+                            <li>Exclusive Games</li>
+                            <li>Extra drinks</li>
+                            <li>Everthing on the Regular Ticket</li>
+                        </ul>
+                        <button class="select-ticket-btn">Select</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section class="booking-section" id="booking">
+            <div class="container">
+                <div class="booking-wrapper">
+                    <!-- Booking Info -->
+                    <div class="booking-info">
+                        <h2>Complete Your Booking</h2>
+                        <p>Secure your spot at our most exclusive event. Fill in your details and proceed to payment.</p>
+                        <ul>
+                            <li>Secure Paystack Payment Processing</li>
+                            <li>Instant WhatsApp Confirmation</li>
+                            <li>VIP Group Access Upon Purchase</li>
+                            <li>24/7 Customer Support</li>
+                        </ul>
+                    </div>
+
+                    <!-- Booking Form -->
+                    <form class="booking-form" id="bookingForm">
+                        <div id="formMessage" class="form-message"></div>
+
+                        <div id="selectedTicketDisplay" class="selected-ticket-display">
+                            <div class="label">Selected Ticket</div>
+                            <div class="value" id="selectedTicketValue"></div>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                        </div>
+
+                        <!-- Email & Phone -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">WhatsApp Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+234 8012345678" required>
+                            </div>
+                        </div>
+
+                        <!-- Ticket Quantity -->
+                        <div class="form-group">
+                            <label for="ticketQty">Number of Tickets</label>
+                            <select id="ticketQty" name="ticketQty" required onchange="updatePrice()">
+                                <option value="">Select quantity</option>
+                                <option value="1">1 Ticket</option>
+                                <option value="2">2 Tickets</option>
+                                <option value="3">3 Tickets</option>
+                                <option value="4">4 Tickets</option>
+                                <option value="5">5 Tickets</option>
+                            </select>
+                        </div>
+
+                        <!-- Mask Fee -->
+                        <div class="mask-fee-section">
+                            <h4>Compulsory Mask</h4>
+                            <div class="mask-option">
+                                <input type="checkbox" id="maskCheckbox" name="maskCheckbox" checked onchange="updatePrice()">
+                                <label for="maskCheckbox">Elegant Mask - ₦3,000</label>
+                            </div>
+                        </div>
+
+                        <!-- Special Requests -->
+                        <div class="form-group">
+                            <label for="notes">Special Requests</label>
+                            <textarea id="notes" name="notes" placeholder="Any special requirements..." rows="2"></textarea>
+                        </div>
+
+                        <!-- Price Breakdown -->
+                        <div class="price-breakdown">
+                            <div class="price-item">
+                                <span>Ticket(s):</span>
+                                <span id="ticketTotal">₦0</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Mask Fee:</span>
+                                <span id="maskTotal">₦0</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Total:</span>
+                                <span id="totalAmount">₦0</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">Proceed to Payment</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>© 2024 MASKED ELEGANCE. All rights reserved. | Built buy DEVL</p>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-checkmark">✓</div>
+            <h2>Payment Confirmed</h2>
+            <p>Thank you for your purchase! Your tickets have been secured.</p>
+            <p>A confirmation has been sent to your WhatsApp. You'll be added to our exclusive group shortly.</p>
+            <button class="close-modal-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // ===== CONFIGURATION =====
+        const PAYSTACK_PUBLIC_KEY = 'pk_test_YOUR_PAYSTACK_KEY_HERE';
+        const ADMIN_WHATSAPP = '2348012345678';
+
+        let selectedTicket = null;
+        let ticketPrice = 0;
+
+        // ===== GOLD PARTICLE ANIMATION =====
+        function initializeParticles() {
+            const container = document.getElementById('particlesContainer');
+            
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle active';
+                
+                const randomX = Math.random() * window.innerWidth;
+                const randomStartY = window.innerHeight + 10;
+                const randomTx = (Math.random() - 0.5) * 100;
+                const randomDuration = 4 + Math.random() * 3;
+                
+                particle.style.left = randomX + 'px';
+                particle.style.top = randomStartY + 'px';
+                particle.style.setProperty('--tx', randomTx + 'px');
+                particle.style.animationDuration = randomDuration + 's';
+                
+                container.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), randomDuration * 1000);
+            }
+            
+            setInterval(createParticle, 300);
+        }
+
+        // ===== TICKET SELECTION =====
+        function selectTicket(type, name, price, validity) {
+            selectedTicket = { type, name, price, validity };
+            ticketPrice = price;
+            
+            document.getElementById('selectedTicketDisplay').classList.add('active');
+            document.getElementById('selectedTicketValue').textContent = `${name} • ₦${price.toLocaleString()}`;
+            
+            document.getElementById('ticketQty').focus();
+            
+            setTimeout(() => {
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+            
+            updatePrice();
+        }
+
+        // ===== UPDATE PRICE =====
+        function updatePrice() {
+            if (!selectedTicket) return;
+
+            const quantity = parseInt(document.getElementById('ticketQty').value) || 0;
+            const maskChecked = document.getElementById('maskCheckbox').checked;
+            const maskFee = maskChecked ? 3000 : 0;
+
+            const ticketTotal = ticketPrice * quantity;
+            const maskTotal = maskFee * quantity;
+            const totalAmount = ticketTotal + maskTotal;
+
+            document.getElementById('ticketTotal').textContent = `₦${ticketTotal.toLocaleString()}`;
+            document.getElementById('maskTotal').textContent = `₦${maskTotal.toLocaleString()}`;
+            document.getElementById('totalAmount').textContent = `₦${totalAmount.toLocaleString()}`;
+
+            return totalAmount;
+        }
+
+        // ===== FORM SUBMISSION =====
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!selectedTicket) {
+                showMessage('Please select a ticket first', 'error');
+                return;
+            }
+
+            const totalAmount = updatePrice();
+            if (totalAmount <= 0) {
+                showMessage('Please select ticket quantity', 'error');
+                return;
+            }
+
+            const formData = {
+                fullName: document.getElementById('fullName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                ticketType: selectedTicket.name,
+                ticketQuantity: document.getElementById('ticketQty').value,
+                maskIncluded: document.getElementById('maskCheckbox').checked,
+                totalAmount: totalAmount,
+                notes: document.getElementById('notes').value.trim()
+            };
+
+            if (!formData.fullName || !formData.email || !formData.phone || !formData.ticketQuantity) {
+                showMessage('Please fill in all required fields', 'error');
+                return;
+            }
+
+            await processPaystackPayment(formData);
+        });
+
+        // ===== PAYSTACK PAYMENT =====
+        async function processPaystackPayment(formData) {
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+
+            try {
+                const paystackHandler = PaystackPop.setup({
+                    key: PAYSTACK_PUBLIC_KEY,
+                    email: formData.email,
+                    amount: formData.totalAmount * 100,
+                    currency: 'NGN',
+                    ref: generateReference(),
+                    onClose: function() {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Proceed to Payment';
+                        showMessage('Payment was cancelled', 'error');
+                    },
+                    onSuccess: function(response) {
+                        handlePaymentSuccess(response, formData);
+                    }
+                });
+                paystackHandler.openIframe();
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('Payment processing error. Please try again.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Proceed to Payment';
+            }
+        }
+
+        // ===== PAYMENT SUCCESS =====
+        async function handlePaymentSuccess(response, formData) {
+            try {
+                await sendWhatsAppNotification(formData, response.reference);
+                showSuccessModal();
+                resetForm();
+            } catch (error) {
+                console.error('Error:', error);
+                showSuccessModal();
+            }
+        }
+
+        // ===== WHATSAPP NOTIFICATION =====
+        async function sendWhatsAppNotification(formData, reference) {
+            const customerMessage = `
+🎭 *MASKED ELEGANCE* 🎭
+
+Thank you ${formData.fullName}!
+
+📋 *Your Booking Confirmed*
+Ticket: ${formData.ticketType}
+Qty: ${formData.ticketQuantity}
+Mask: ✓ Included
+Total: ₦${formData.totalAmount.toLocaleString()}
+Ref: ${reference}
+
+You'll be added to our exclusive WhatsApp group! ✨
+
+Questions? Reply here.
+            `;
+
+            const adminMessage = `
+🎭 *NEW BOOKING* 🎭
+
+👤 ${formData.fullName}
+📧 ${formData.email}
+📱 ${formData.phone}
+
+🎫 ${formData.ticketType} (Qty: ${formData.ticketQuantity})
+💰 ₦${formData.totalAmount.toLocaleString()}
+Ref: ${reference}
+
+Notes: ${formData.notes || 'None'}
+            `;
+
+            console.log('Customer Message:', customerMessage);
+            console.log('Admin Message:', adminMessage);
+
+            // Implement your WhatsApp API integration here
+        }
+
+        // ===== UTILITY FUNCTIONS =====
+        function generateReference() {
+            return 'ME_' + Math.floor((Math.random() * 1000000000) + 1);
+        }
+
+        function showMessage(message, type) {
+            const messageEl = document.getElementById('formMessage');
+            messageEl.textContent = message;
+            messageEl.className = `form-message show ${type}`;
+            setTimeout(() => messageEl.classList.remove('show'), 5000);
+        }
+
+        function showSuccessModal() {
+            document.getElementById('successModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        function resetForm() {
+            document.getElementById('bookingForm').reset();
+            document.getElementById('selectedTicketDisplay').classList.remove('active');
+            selectedTicket = null;
+        }
+
+        // ===== LOAD PAYSTACK =====
+        window.addEventListener('load', () => {
+            const script = document.createElement('script');
+            script.src = 'https://js.paystack.co/v1/inline.js';
+            document.body.appendChild(script);
+            
+            initializeParticles();
+        });
+
+        updatePrice();
+    </script>
+</body>
+</html>
