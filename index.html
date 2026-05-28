@@ -105,7 +105,7 @@
 
         /* ===== HEADER ===== */
         header {
-            padding: 40px 0;
+            padding: 30px 0;
             position: relative;
             z-index: 10;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -115,7 +115,7 @@
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -123,9 +123,9 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -134,14 +134,14 @@
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 30px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 12px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: color 0.3s ease;
@@ -176,23 +176,23 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 20px;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 60vh;
+            min-height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 100px 40px;
+            padding: 60px 20px;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 72px;
+            font-size: clamp(36px, 10vw, 72px);
             font-weight: 900;
             letter-spacing: 2px;
             margin-bottom: 20px;
@@ -201,16 +201,16 @@
         }
 
         .hero .subtitle {
-            font-size: 18px;
+            font-size: clamp(14px, 4vw, 18px);
             color: var(--text-secondary);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             animation: slideInUp 1s ease-out 0.2s both;
         }
 
         .hero .description {
-            font-size: 16px;
+            font-size: clamp(14px, 3vw, 16px);
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
@@ -246,30 +246,30 @@
 
         /* ===== TICKETS SECTION ===== */
         .tickets-section {
-            padding: 120px 0;
+            padding: 80px 0;
             position: relative;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 56px;
+            font-size: clamp(32px, 8vw, 56px);
             font-weight: 900;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             text-align: center;
             letter-spacing: 1px;
         }
 
         .tickets-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
         .ticket-card {
             background: rgba(26, 26, 26, 0.8);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 50px 40px;
+            padding: 40px 30px;
             position: relative;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -298,31 +298,31 @@
         }
 
         .ticket-label {
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .ticket-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 36px;
+            font-size: clamp(28px, 6vw, 36px);
             font-weight: 900;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: 1px;
         }
 
         .ticket-validity {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             letter-spacing: 0.5px;
         }
 
         .ticket-price {
             font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-size: clamp(36px, 8vw, 48px);
             font-weight: 900;
             color: var(--gold);
             margin-bottom: 8px;
@@ -330,26 +330,26 @@
         }
 
         .ticket-price-period {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             letter-spacing: 0.5px;
         }
 
         .ticket-features {
             list-style: none;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 30px 0;
+            padding: 20px 0;
         }
 
         .ticket-features li {
-            padding: 10px 0;
-            font-size: 14px;
+            padding: 8px 0;
+            font-size: 13px;
             color: var(--text-secondary);
             position: relative;
-            padding-left: 20px;
+            padding-left: 18px;
         }
 
         .ticket-features li::before {
@@ -357,18 +357,18 @@
             position: absolute;
             left: 0;
             color: var(--gold);
-            font-size: 12px;
+            font-size: 10px;
         }
 
         .select-ticket-btn {
             width: 100%;
-            padding: 14px 30px;
+            padding: 12px 20px;
             background: transparent;
             border: 1px solid var(--gold);
             color: var(--gold);
             font-family: 'Lora', serif;
-            font-size: 13px;
-            letter-spacing: 2px;
+            font-size: 12px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -383,7 +383,7 @@
 
         /* ===== BOOKING SECTION ===== */
         .booking-section {
-            padding: 120px 0;
+            padding: 80px 0;
             background: rgba(26, 26, 26, 0.4);
             border-top: 1px solid rgba(212, 175, 55, 0.2);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -392,20 +392,20 @@
         .booking-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 50px;
             align-items: start;
         }
 
         .booking-info h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-size: clamp(32px, 8vw, 48px);
             font-weight: 900;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             letter-spacing: 1px;
         }
 
         .booking-info p {
-            font-size: 16px;
+            font-size: clamp(13px, 3vw, 16px);
             color: var(--text-secondary);
             margin-bottom: 20px;
             line-height: 1.8;
@@ -413,22 +413,22 @@
 
         .booking-info ul {
             list-style: none;
-            margin: 40px 0;
+            margin: 35px 0;
         }
 
         .booking-info li {
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            font-size: 14px;
+            font-size: 13px;
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .booking-info li::before {
             content: '✓';
             color: var(--gold);
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             flex-shrink: 0;
         }
 
@@ -436,21 +436,21 @@
         .booking-form {
             background: rgba(26, 26, 26, 0.9);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 50px;
+            padding: 40px 25px;
             backdrop-filter: blur(10px);
         }
 
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
@@ -458,12 +458,12 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 14px 16px;
+            padding: 12px 14px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.2);
             color: var(--text-primary);
             font-family: 'Lora', serif;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s ease;
         }
 
@@ -484,15 +484,14 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px;
         }
 
         .selected-ticket-display {
             background: rgba(212, 175, 55, 0.08);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 20px;
-            border-radius: 0;
-            margin-bottom: 30px;
+            padding: 16px;
+            margin-bottom: 25px;
             display: none;
         }
 
@@ -503,7 +502,7 @@
 
         .selected-ticket-display p {
             margin: 0;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .selected-ticket-display .label {
@@ -514,85 +513,76 @@
 
         .selected-ticket-display .value {
             color: var(--text-primary);
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .mask-fee-section {
             background: rgba(212, 175, 55, 0.08);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 0;
+            padding: 16px;
+            margin-bottom: 25px;
         }
 
         .mask-fee-section h4 {
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 600;
         }
 
-        .mask-option {
-            display: flex;
+        .mask-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
+            gap: 8px;
+            padding: 10px 14px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 2px;
         }
 
-        .mask-option input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            accent-color: var(--gold);
-        }
-
-        .mask-option label {
-            margin: 0;
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--text-primary);
-            text-transform: none;
-            letter-spacing: normal;
-            font-weight: normal;
-            text-transform: none;
+        .mask-badge::before {
+            content: '✓';
+            font-size: 16px;
         }
 
         .price-breakdown {
             background: rgba(212, 175, 55, 0.08);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 25px;
-            margin-bottom: 30px;
-            border-radius: 0;
+            padding: 20px;
+            margin-bottom: 25px;
         }
 
         .price-item {
             display: flex;
             justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 13px;
+            margin-bottom: 10px;
             color: var(--text-secondary);
         }
 
         .price-item:last-child {
             margin-bottom: 0;
-            padding-top: 12px;
+            padding-top: 10px;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: var(--gold);
         }
 
         .submit-btn {
             width: 100%;
-            padding: 16px 30px;
+            padding: 14px 25px;
             background: var(--gold);
             color: var(--black);
             border: none;
             font-family: 'Lora', serif;
-            font-size: 13px;
-            letter-spacing: 2px;
+            font-size: 12px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -612,10 +602,9 @@
 
         /* Message Display */
         .form-message {
-            padding: 16px;
+            padding: 14px;
             margin-bottom: 20px;
-            font-size: 13px;
-            border-radius: 0;
+            font-size: 12px;
             display: none;
             animation: slideInDown 0.4s ease-out;
         }
@@ -649,6 +638,7 @@
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease;
+            padding: 20px;
         }
 
         .modal.active {
@@ -658,11 +648,12 @@
         .modal-content {
             background: var(--dark-gray);
             border: 1px solid rgba(212, 175, 55, 0.4);
-            padding: 60px 40px;
-            max-width: 500px;
-            width: 90%;
+            padding: 50px 30px;
+            max-width: 450px;
+            width: 100%;
             text-align: center;
             animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 0;
         }
 
         @keyframes scaleIn {
@@ -678,23 +669,23 @@
 
         .modal-content h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
+            font-size: clamp(32px, 8vw, 42px);
             font-weight: 900;
             color: var(--gold);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: 1px;
         }
 
         .modal-content p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             line-height: 1.8;
         }
 
         .success-checkmark {
-            font-size: 60px;
-            margin-bottom: 20px;
+            font-size: 50px;
+            margin-bottom: 15px;
             animation: bounce 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
@@ -703,81 +694,127 @@
             50% { transform: translateY(-15px); }
         }
 
-        .close-modal-btn {
-            margin-top: 30px;
-            padding: 12px 40px;
-            background: var(--gold);
-            color: var(--black);
+        .whatsapp-redirect-btn {
+            margin-top: 25px;
+            padding: 14px 30px;
+            background: #25D366;
+            color: white;
             border: none;
             font-family: 'Lora', serif;
             font-size: 12px;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
+            border-radius: 0;
+            display: inline-block;
+            text-decoration: none;
         }
 
-        .close-modal-btn:hover {
-            background: var(--gold-light);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        .whatsapp-redirect-btn:hover {
+            background: #1ea853;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
         }
 
         /* Footer */
         footer {
-            padding: 40px;
+            padding: 30px 20px;
             text-align: center;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-secondary);
             letter-spacing: 1px;
         }
 
-        /* Responsive */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 20px;
-                padding: 0 20px;
+                gap: 15px;
+                padding: 0 15px;
             }
 
             .nav-links {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
                 text-align: center;
             }
 
             .hero {
-                padding: 60px 20px;
-            }
-
-            .hero h1 {
-                font-size: 48px;
+                padding: 50px 15px;
+                min-height: 40vh;
             }
 
             .container {
-                padding: 0 20px;
+                padding: 0 15px;
             }
 
             .tickets-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
             }
 
             .booking-wrapper {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 35px;
             }
 
             .booking-form {
-                padding: 30px;
+                padding: 30px 20px;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .tickets-section {
+                padding: 60px 0;
+            }
+
+            .booking-section {
+                padding: 60px 0;
+            }
+
+            .modal-content {
+                padding: 40px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 18px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
             }
 
             .section-title {
-                font-size: 36px;
+                font-size: 28px;
+                margin-bottom: 35px;
+            }
+
+            .ticket-card {
+                padding: 30px 20px;
+            }
+
+            .booking-info h2 {
+                font-size: 28px;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            footer {
+                font-size: 10px;
+                padding: 20px 15px;
             }
         }
     </style>
@@ -842,7 +879,7 @@
                         <div class="ticket-price">₦10,000</div>
                         <p class="ticket-price-period">Per Ticket</p>
                         <ul class="ticket-features">
-                            <li>Everything on Early bed ticket</li>
+                            <li>Everything on Early Bird ticket</li>
                         </ul>
                         <button class="select-ticket-btn">Select</button>
                     </div>
@@ -859,7 +896,7 @@
                             <li>Premium Bar Service</li>
                             <li>Exclusive Games</li>
                             <li>Extra drinks</li>
-                            <li>Everthing on the Regular Ticket</li>
+                            <li>Everything on the Regular Ticket</li>
                         </ul>
                         <button class="select-ticket-btn">Select</button>
                     </div>
@@ -878,8 +915,8 @@
                         <ul>
                             <li>Secure Paystack Payment Processing</li>
                             <li>Instant WhatsApp Confirmation</li>
-                            <li>VIP Group Access Upon Purchase</li>
-                            <li>24/7 Customer Support</li>
+                            <li>Direct Access to Exclusive Group</li>
+                            <li>Premium Event Experience</li>
                         </ul>
                     </div>
 
@@ -923,13 +960,10 @@
                             </select>
                         </div>
 
-                        <!-- Mask Fee -->
+                        <!-- Mask Fee - MANDATORY -->
                         <div class="mask-fee-section">
                             <h4>Compulsory Mask</h4>
-                            <div class="mask-option">
-                                <input type="checkbox" id="maskCheckbox" name="maskCheckbox" checked onchange="updatePrice()">
-                                <label for="maskCheckbox">Elegant Mask - ₦3,000</label>
-                            </div>
+                            <div class="mask-badge">Elegant Mask - ₦3,000</div>
                         </div>
 
                         <!-- Special Requests -->
@@ -963,24 +997,25 @@
 
     <!-- Footer -->
     <footer id="footer">
-        <p>© 2024 MASKED ELEGANCE. All rights reserved. | Built buy DEVL</p>
+        <p>© 2024 AFTER THE MASK. All rights reserved. | Built by DEVL</p>
     </footer>
 
-    <!-- Success Modal -->
+    <!-- Success Modal with WhatsApp Redirect -->
     <div class="modal" id="successModal">
         <div class="modal-content">
             <div class="success-checkmark">✓</div>
-            <h2>Payment Confirmed</h2>
+            <h2>Payment Confirmed!</h2>
             <p>Thank you for your purchase! Your tickets have been secured.</p>
-            <p>A confirmation has been sent to your WhatsApp. You'll be added to our exclusive group shortly.</p>
-            <button class="close-modal-btn" onclick="closeModal()">Close</button>
+            <p>Click the button below to join our exclusive WhatsApp group and get all event details.</p>
+            <a href="#" id="whatsappLink" class="whatsapp-redirect-btn" target="_blank">Join WhatsApp Group</a>
+            <button class="whatsapp-redirect-btn" onclick="closeModal()" style="background: var(--gold); color: var(--black); margin-top: 12px; display: block; width: 100%;">Close</button>
         </div>
     </div>
 
     <script>
         // ===== CONFIGURATION =====
         const PAYSTACK_PUBLIC_KEY = 'pk_test_YOUR_PAYSTACK_KEY_HERE';
-        const ADMIN_WHATSAPP = '2348012345678';
+        const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/Hz5FDwAmpXPAYPEEMZz9OH?s=cl&p=a&mlu=3';
 
         let selectedTicket = null;
         let ticketPrice = 0;
@@ -1028,13 +1063,12 @@
             updatePrice();
         }
 
-        // ===== UPDATE PRICE =====
+        // ===== UPDATE PRICE - MASK IS ALWAYS INCLUDED =====
         function updatePrice() {
             if (!selectedTicket) return;
 
             const quantity = parseInt(document.getElementById('ticketQty').value) || 0;
-            const maskChecked = document.getElementById('maskCheckbox').checked;
-            const maskFee = maskChecked ? 3000 : 0;
+            const maskFee = 3000; // Always included - not optional
 
             const ticketTotal = ticketPrice * quantity;
             const maskTotal = maskFee * quantity;
@@ -1068,7 +1102,6 @@
                 phone: document.getElementById('phone').value.trim(),
                 ticketType: selectedTicket.name,
                 ticketQuantity: document.getElementById('ticketQty').value,
-                maskIncluded: document.getElementById('maskCheckbox').checked,
                 totalAmount: totalAmount,
                 notes: document.getElementById('notes').value.trim()
             };
@@ -1112,11 +1145,25 @@
             }
         }
 
-        // ===== PAYMENT SUCCESS =====
+        // ===== PAYMENT SUCCESS - DIRECT WHATSAPP REDIRECT =====
         async function handlePaymentSuccess(response, formData) {
             try {
-                await sendWhatsAppNotification(formData, response.reference);
+                // Set WhatsApp link
+                document.getElementById('whatsappLink').href = WHATSAPP_GROUP_LINK;
+                
+                // Show success modal with WhatsApp redirect button
                 showSuccessModal();
+                
+                // Log booking details
+                console.log('Payment Successful:', {
+                    ...formData,
+                    reference: response.reference,
+                    timestamp: new Date().toISOString()
+                });
+
+                // Optional: Send notification to admin via API
+                sendAdminNotification(formData, response.reference);
+                
                 resetForm();
             } catch (error) {
                 console.error('Error:', error);
@@ -1124,27 +1171,11 @@
             }
         }
 
-        // ===== WHATSAPP NOTIFICATION =====
-        async function sendWhatsAppNotification(formData, reference) {
-            const customerMessage = `
-🎭 *MASKED ELEGANCE* 🎭
-
-Thank you ${formData.fullName}!
-
-📋 *Your Booking Confirmed*
-Ticket: ${formData.ticketType}
-Qty: ${formData.ticketQuantity}
-Mask: ✓ Included
-Total: ₦${formData.totalAmount.toLocaleString()}
-Ref: ${reference}
-
-You'll be added to our exclusive WhatsApp group! ✨
-
-Questions? Reply here.
-            `;
-
+        // ===== SEND ADMIN NOTIFICATION (OPTIONAL) =====
+        async function sendAdminNotification(formData, reference) {
+            // You can implement this to send booking details to your backend/WhatsApp API
             const adminMessage = `
-🎭 *NEW BOOKING* 🎭
+🎭 NEW BOOKING - AFTER THE MASK 🎭
 
 👤 ${formData.fullName}
 📧 ${formData.email}
@@ -1155,17 +1186,16 @@ Questions? Reply here.
 Ref: ${reference}
 
 Notes: ${formData.notes || 'None'}
+Time: ${new Date().toLocaleString()}
             `;
 
-            console.log('Customer Message:', customerMessage);
-            console.log('Admin Message:', adminMessage);
-
-            // Implement your WhatsApp API integration here
+            console.log('Admin Notification:', adminMessage);
+            // Implement your backend API call here if needed
         }
 
         // ===== UTILITY FUNCTIONS =====
         function generateReference() {
-            return 'ME_' + Math.floor((Math.random() * 1000000000) + 1);
+            return 'ATM_' + Math.floor((Math.random() * 1000000000) + 1);
         }
 
         function showMessage(message, type) {
